@@ -7,8 +7,9 @@ frontend haproxy-main
 
 backend apache_webservers
     balance roundrobin
-    server websvr1      10.10.1.30:80 check
-    server websvr2      10.10.1.31:80 check
+	option tcp-check
+    server websvr1      10.10.1.30:80 check fall 3  rise 2
+    server websvr2      10.10.1.31:80 check fall 3  rise 2
 
 
 listen stats
